@@ -21,8 +21,7 @@ module Coauthor
       File.open(PAIR_FILE_PATH, 'w+') do |file|
         file.puts
         credentials.each do |detail|
-          file.write("\nCo-authored-by: #{detail['name']}
-                       <#{detail['email']}>")
+          file.write("\nCo-authored-by: #{detail['name']} <#{detail['email']}>")
         end
       end
     end
