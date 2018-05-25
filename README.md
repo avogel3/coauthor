@@ -13,10 +13,9 @@ Install with:
 ## Usage
 
 1) First thing you should do is setup a coauthor file. At this time, we support 2 coauthors. 
-    
-    $ coauthor 
 
-    Follow the steps and setup your pair
+    $ coauthor # Follow the steps and setup your pair
+
 
 2) After that you're all set to commit. Add your files with git and run `coauthor` when you are ready to commit
 
