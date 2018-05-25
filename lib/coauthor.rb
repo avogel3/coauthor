@@ -1,5 +1,5 @@
-require "coauthor/version"
+require 'coauthor/version'
+require 'coauthor/cli'
 
 module Coauthor
-  # Your code goes here...
 end
