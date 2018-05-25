@@ -1,28 +1,24 @@
 # Coauthor
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/coauthor`. To experiment with that code, run `bin/console` for an interactive prompt.
+Command line tool for easily committing with Github Coauthors
 
-TODO: Delete this and the text above, and describe your gem
+[Link - Github Coauthoring](https://help.github.com/articles/creating-a-commit-with-multiple-authors/)
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'coauthor'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install with: 
 
     $ gem install coauthor
 
 ## Usage
 
-TODO: Write usage instructions here
+1) First thing you should do is setup a coauthor file. At this time, we support 2 coauthors. 
+    
+    $ coauthor 
+
+    Follow the steps and setup your pair
+
+2) After that you're all set to commit. Add your files with git and run `coauthor` when you are ready to commit
 
 ## Development
 
