@@ -2,18 +2,19 @@ require 'thor'
 
 module Coauthor
   class CLI < Thor
-    PAIR_CONFIG_FILE = '~/.paircommit'.freeze
+    PAIR_CONFIG_FILE = '~/.coauthors'.freeze
     PAIR_FILE_PATH = File.expand_path(PAIR_CONFIG_FILE)
 
     desc 'setup', 'Create a configuration file for Github Coauthoring'
     def setup
+      puts Dir.pwd
       credentials = []
       2.times do |n|
         detail = {}
         puts "Enter commiter #{n + 1}'s name:"
-        detail['name'] = gets.chomp
+        detail['name'] = STDIN.gets.chomp
         puts "Enter commiter #{n + 1}'s email:"
-        detail['email'] = gets.chomp
+        detail['email'] = STDIN.gets.chomp
         credentials << detail
       end
 
