@@ -7,7 +7,6 @@ module Coauthor
 
     desc 'setup', 'Create a configuration file for Github Coauthoring'
     def setup
-      puts Dir.pwd
       credentials = []
       2.times do |n|
         detail = {}
