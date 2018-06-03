@@ -1,5 +1,6 @@
 require 'thor'
 require 'colorize'
+require 'coauthor/setup'
 
 module Coauthor
   class CLI < Thor
@@ -8,22 +9,7 @@ module Coauthor
 
     desc 'setup', 'Create a configuration file for Github Coauthoring'
     def setup
-      credentials = []
-      2.times do |n|
-        detail = {}
-        puts "Enter commiter #{n + 1}'s name:"
-        detail['name'] = STDIN.gets.chomp
-        puts "Enter commiter #{n + 1}'s email:"
-        detail['email'] = STDIN.gets.chomp
-        credentials << detail
-      end
-
-      File.open(PAIR_FILE_PATH, 'w+') do |file|
-        file.puts
-        credentials.each do |detail|
-          file.write("\nCo-authored-by: #{detail['name']} <#{detail['email']}>")
-        end
-      end
+      Coauthor::Setup.new.call
     end
 
     desc 'commit', 'Default command. Make a commit with the coauthor configuration'
