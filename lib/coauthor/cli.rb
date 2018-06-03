@@ -1,11 +1,11 @@
 require 'thor'
 require 'colorize'
 require 'coauthor/setup'
+require 'coauthor/constants'
 
 module Coauthor
   class CLI < Thor
-    PAIR_CONFIG_FILE = '~/.coauthors'.freeze
-    PAIR_FILE_PATH = File.expand_path(PAIR_CONFIG_FILE)
+    include Constants
 
     desc 'setup', 'Create a configuration file for Github Coauthoring'
     def setup
@@ -15,7 +15,7 @@ module Coauthor
     desc 'commit', 'Default command. Make a commit with the coauthor configuration'
     def commit
       return puts system("git commit --template #{PAIR_CONFIG_FILE}") if File.file?(PAIR_FILE_PATH)
-      puts `echo "Run coauthor setup before committing with coauthor"`
+      puts `echo "Run coauthor setup before committing with Coauthor"`
     end
     default_task :commit
   end

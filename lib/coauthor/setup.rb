@@ -1,8 +1,8 @@
+require 'coauthor/constants'
+
 module Coauthor
   class Setup
-    PAIR_CONFIG_FILE = '~/.coauthors'.freeze
-    PAIR_FILE_PATH = File.expand_path(PAIR_CONFIG_FILE)
-
+    include Constants
     attr_accessor :credentials
 
     def initialize
@@ -42,6 +42,7 @@ module Coauthor
           file.write("\nCo-authored-by: #{detail['name']} <#{detail['email']}>")
         end
       end
+      puts "...DONE! Coauthor file written to #{PAIR_CONFIG_FILE}\n".colorize(:green)
     end
   end
 end
