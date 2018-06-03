@@ -1,4 +1,5 @@
 require 'thor'
+require 'colorize'
 
 module Coauthor
   class CLI < Thor
