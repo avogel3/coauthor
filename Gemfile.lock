@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    coauthor (0.1.0)
-      colorize
+    coauthor (0.1.1)
+      colorize (~> 0.8.1)
       thor
 
 GEM
@@ -37,7 +37,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   coauthor!
-  pry
+  pry (~> 0.11.0)
   rake (~> 10.0)
   rspec (~> 3.0)
 
