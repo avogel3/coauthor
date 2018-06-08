@@ -19,7 +19,7 @@ module Coauthor
     private
 
     def gather_coauthor_info
-      puts 'Welcome to Coauthor Setup'.colorize(:blue)
+      puts 'Coauthor Setup'.colorize(:blue)
       2.times do |n|
         detail = {}
         color = info_color(n + 1)
