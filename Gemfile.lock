@@ -3,7 +3,7 @@ PATH
   specs:
     coauthor (0.1.1)
       colorize (~> 0.8.1)
-      thor
+      thor (~> 0.20.0)
 
 GEM
   remote: https://rubygems.org/
