@@ -11,3 +11,5 @@
 .rspec_status
 
 *.gem
+bin
+.DS_Store
