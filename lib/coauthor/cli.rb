@@ -14,7 +14,7 @@ module Coauthor
 
     desc 'commit', 'Default command. Make a commit with the coauthor configuration'
     def commit
-      return puts system("git commit --template #{PAIR_CONFIG_FILE}") if File.file?(PAIR_FILE_PATH)
+      return system("git commit --template #{PAIR_CONFIG_FILE}") if File.file?(PAIR_FILE_PATH)
       puts `echo "Run coauthor setup before committing with Coauthor"`
     end
     default_task :commit
