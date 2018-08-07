@@ -5,38 +5,26 @@ require 'coauthor/constants'
 
 module Coauthor
   class CLI < Thor
-    include Constants
-
-    desc 'setup', 'Create a configuration file for Github Coauthoring'
-    def setup
-      Coauthor::Setup.new.call
+    template_description = 'Create a template file for Github Coauthoring'
+    desc 'template', template_description
+    def template
+      puts template_description.colorize(:blue)
+      ::Git::Template.call
     end
 
-    desc 'git_user', 'Set the default git user for the current repository'
+    git_user_description = 'Set the default git user for the current repository'
+    desc 'git_user', git_user_description
     def git_user
-      puts "Set this repository's git user".colorize(:blue)
-      name = prompt_user_name
-      email = prompt_user_email
-      Coauthor::GitUser.call(email: email, name: name)
+      puts git_user_description.colorize(:blue)
+      ::Git::User.call
     end
 
-    desc 'commit', 'Default command. Make a commit with the coauthor configuration'
+    commit_description = 'Git commit with the coauthor template file'
+    desc 'commit', commit_description
     def commit
-      return system("git commit --template #{PAIR_CONFIG_FILE}") if File.file?(PAIR_FILE_PATH)
-      puts `echo "Run coauthor setup before committing with Coauthor"`
+      puts commit_description.colorize(:blue)
+      ::Git::Commit.call
     end
     default_task :commit
-
-    private
-
-    def prompt_user_name
-      puts "Enter the user's name:".colorize(:yellow)
-      STDIN.gets.chomp
-    end
-
-    def prompt_user_email
-      puts "Enter the author's email:".colorize(:yellow)
-      STDIN.gets.chomp
-    end
   end
 end
