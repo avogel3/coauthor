@@ -18,7 +18,7 @@ module Coauthor
           detail = {}
           detail['name'] = user_name
           detail['email'] = user_email
-          credentials << detail if detail.keys.any?
+          credentials << detail if detail.keys.any? && !detail.values.join.strip.empty?
         end
       end
     end
