@@ -1,15 +1,18 @@
+require 'coauthor/prompt'
+
 module Coauthor
   module Git
     class User
       attr_reader :name, :email
-      def new(name:, email:)
+      def initialize(name:, email:)
         @name = name
         @email = email
+        set_git_config
       end
 
       def self.call
-        user_info = ::Prompt.fetch_user_info.first
-        new(name: user_info['name'], email: user_info['email']).set_git_config
+        user_info = Prompt.fetch_user_info.first
+        new(name: user_info['name'], email: user_info['email'])
       rescue SystemExit, Interrupt
         puts "\n...User setup cancelled".colorize(:red)
       end

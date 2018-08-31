@@ -1,30 +1,30 @@
 require 'thor'
 require 'colorize'
-require 'coauthor/setup'
-require 'coauthor/constants'
+
+Gem.find_files('coauthor/git/**/*.rb').each { |path| require path }
 
 module Coauthor
   class CLI < Thor
-    template_description = 'Create a template file for Github Coauthoring'
-    desc 'template', template_description
-    def template
-      puts template_description.colorize(:blue)
-      ::Git::Template.call
+    SETUP_DESCRIPTION = 'Create a template file for Github Coauthoring'.freeze
+    desc 'setup', SETUP_DESCRIPTION
+    def setup
+      puts SETUP_DESCRIPTION.colorize(:blue)
+      Coauthor::Git::Template.call
     end
 
-    git_user_description = 'Set the default git user for the current repository'
-    desc 'git_user', git_user_description
-    def git_user
-      puts git_user_description.colorize(:blue)
-      ::Git::User.call
-    end
-
-    commit_description = 'Git commit with the coauthor template file'
-    desc 'commit', commit_description
+    COMMIT_DESCRIPTION = 'Git commit with the coauthor template file'.freeze
+    desc 'commit', COMMIT_DESCRIPTION
     def commit
-      puts commit_description.colorize(:blue)
-      ::Git::Commit.call
+      puts COMMIT_DESCRIPTION.colorize(:blue)
+      Coauthor::Git::Commit.call
     end
     default_task :commit
+
+    GIT_USER_DESCRIPTION = 'Set the default git user for the current repository'.freeze
+    desc 'git_user', GIT_USER_DESCRIPTION
+    def git_user
+      puts GIT_USER_DESCRIPTION.colorize(:blue)
+      Coauthor::Git::User.call
+    end
   end
 end

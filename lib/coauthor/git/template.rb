@@ -1,16 +1,20 @@
+require 'coauthor/constants'
+require 'coauthor/prompt'
+
 module Coauthor
   module Git
     class Template
       include Constants
       attr_reader :credentials
-      def new(credentials:)
+      def initialize(credentials:)
         @credentials = credentials
+        write_file
       end
 
       def self.call
-        credentials = ::Prompt.fetch_user_info(user_count: 2)
+        credentials = Prompt.fetch_user_info(user_count: 2)
         return unless credentials
-        new(credentials: credentials).write_file
+        new(credentials: credentials)
       rescue SystemExit, Interrupt
         puts "\n...Template setup cancelled".colorize(:red)
       end
