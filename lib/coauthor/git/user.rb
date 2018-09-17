@@ -20,8 +20,8 @@ module Coauthor
       private
 
       def set_git_config
-        system("git config user.name #{name}")
-        system("git config user.email #{email}")
+        system("git config user.name '#{name}'")
+        system("git config user.email '#{email}'")
         puts "...DONE! Git repository author has been set to #{name} <#{email}>".colorize(:green)
       end
     end
